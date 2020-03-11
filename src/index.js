@@ -10,7 +10,7 @@ export default class Index {
       baseDpr: 2,                 // base device pixel ratio (default: 2)
       remUnit: 75,                // rem unit value (default: 75)
       remPrecision: 6,            // rem value precision (default: 6)
-      hairlineClass: 'hairlines', // class name of 1px border (default: 'hairlines')
+      hairlineSelector: '.hairlines', // class name of 1px border (default: '.hairlines')
       autoRem: true,              // whether to transform to rem unit (default: true)
       pxPropList: ['font*', 'border*', '!border-radius'],
       propList: ['*'],
@@ -28,7 +28,7 @@ export default class Index {
   }
 
   _processRules (rules, noDealHairline = false) { // FIXME: keyframes do not support `hairline`
-    const { hairlineClass, autoRem } = this.config
+    const { hairlineSelector, autoRem } = this.config
 
     for (let i = 0; i < rules.length; i++) {
       const rule = rules[i]
@@ -53,7 +53,7 @@ export default class Index {
       if (!noDealHairline) {
         newRule = {
           type: rule.type,
-          selectors: rule.selectors.map((sel) => `.${hairlineClass} ${sel}`),
+          selectors: rule.selectors.map((sel) => hairlineSelector.split(',').map((selector)=>`${selector} ${sel}`)),
           declarations: []
         }
       }
@@ -94,7 +94,7 @@ export default class Index {
           }
 
           // generate a new rule of `hairline`
-          if (!noDealHairline && this._needHairline(originDeclarationValue)) {
+          if (!noDealHairline && /^border(-.*)?(width)?$/.test(declaration.property) && this._needHairline(originDeclarationValue)) {
             const newDeclaration = Object.assign({}, declaration)
             newDeclaration.value = this._getCalcValue('px', originDeclarationValue, true)
             newRule.declarations.push(newDeclaration)

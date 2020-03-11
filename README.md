@@ -98,7 +98,7 @@ Config:
 * `remUnit`: number, rem unit value (default: 75)
 * `baseDpr`: number, base device pixel ratio (default: 2)
 * `remPrecision`: number, rem value precision (default: 6)
-* `hairlineClass`: string, class name of 1px border (default 'hairlines')
+* `hairlineSelector`: string, selector name of 1px border (default '.hairlines') Example: '[data-dpr="2"],[data-dpr="3"]'
 * `autoRem`: boolean, whether to transform to rem unit (default: true)
 * `propList`: array, The properties that can use transform (default: ['*'])
   - Values need to be exact matches.

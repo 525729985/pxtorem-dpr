@@ -22,7 +22,6 @@
   border-top: 0.5px solid #ddd;
   border-bottom: 0.5px solid #ddd;
   border-right: 0.5px solid #ddd;
-  box-shadow: 1px 0.5px #fe353a;
 }
 
 @supports (bottom: constant(safe-area-inset-bottom)) {
@@ -50,7 +49,6 @@
     border-top: 0.5px solid #ddd;
     border-bottom: 0.5px solid #ddd;
     border-right: 0.5px solid #ddd;
-    box-shadow: 1px 0.5px #fe353a;
   }
 }
 
@@ -97,7 +95,6 @@
     border-top: 0.5px solid #ddd;
     border-bottom: 0.5px solid #ddd;
     border-right: 0.5px solid #ddd;
-    box-shadow: 1px 0.5px #fe353a;
   }
 
 @supports (bottom: constant(safe-area-inset-bottom)) {
@@ -125,7 +122,6 @@
       border-top: 0.5px solid #ddd;
       border-bottom: 0.5px solid #ddd;
       border-right: 0.5px solid #ddd;
-      box-shadow: 1px 0.5px #fe353a;
     }
 }
 
