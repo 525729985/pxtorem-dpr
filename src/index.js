@@ -29,7 +29,9 @@ export default class Index {
 
   _processRules (rules, noDealHairline = false) { // FIXME: keyframes do not support `hairline`
     const { hairlineSelector, autoRem } = this.config
-
+    if (!hairlineSelector) {
+      noDealHairline = true
+    }
     for (let i = 0; i < rules.length; i++) {
       const rule = rules[i]
       const ruleType = rule.type
@@ -53,7 +55,7 @@ export default class Index {
       if (!noDealHairline) {
         newRule = {
           type: rule.type,
-          selectors: rule.selectors.map((sel) => hairlineSelector.split(',').map((selector)=>`${selector} ${sel}`)),
+          selectors: rule.selectors.map((sel) => hairlineSelector.split(',').map((selector) => `${selector} ${sel}`)),
           declarations: []
         }
       }
